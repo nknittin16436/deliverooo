@@ -1,8 +1,10 @@
-import { View, Text, Image ,TextInput} from 'react-native'
+import { View, Text, Image, TextInput, ScrollView } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FontAwesome5, Entypo ,Ionicons,FontAwesome} from '@expo/vector-icons';
+import { FontAwesome5, Entypo, Ionicons, FontAwesome } from '@expo/vector-icons';
+import Categories from '../components/Categories';
+import FeaturedRow from '../components/FeaturedRow';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -43,6 +45,33 @@ const HomeScreen = () => {
                 </View>
                 <FontAwesome name="exchange" size={24} color="#00CCBB" />
             </View>
+
+
+            {/* Categories */}
+            <ScrollView className="bg-gray-100" showsVerticalScrollIndicator={false}>
+                {/* categories */}
+
+                <Categories />
+                {/* Featured */}
+
+                <FeaturedRow
+                    id="123"
+                    title="Featured"
+                    description="Paid placements from our partner"
+                />
+                <FeaturedRow
+                    id="1234"
+                    title="Tasty Dicounts"
+                    description="Paid placements from our partner"
+                />
+                <FeaturedRow
+                    id="1235"
+                    title="Offers only for you"
+                    description="Paid placements from our partner"
+                />
+
+                
+            </ScrollView>
 
         </SafeAreaView>
     )
