@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 import { Feather, AntDesign } from '@expo/vector-icons';
+import { urlFor } from "../sanity";
 const RestaurantCard = ({
     id,
     imgUrl,
@@ -16,7 +17,7 @@ const RestaurantCard = ({
     return (
 
         <TouchableOpacity className="bg-white mr-3 shadow">
-            <Image className="h-36 w-64 rounded-sm" source={{ uri: imgUrl }} />
+            <Image className="h-36 w-64 rounded-sm" source={{ uri: urlFor(imgUrl).url() }} />
             <View className="px-3 pb-4">
                 <Text className="font-bold text-lg pt-2">
                     {title}
