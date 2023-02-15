@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 import { Feather, AntDesign } from '@expo/vector-icons';
 import { urlFor } from "../sanity";
+import { useNavigation } from "@react-navigation/native";
 const RestaurantCard = ({
     id,
     imgUrl,
@@ -14,9 +15,22 @@ const RestaurantCard = ({
     long,
     lat,
 }) => {
+
+    const navigation = useNavigation();
     return (
 
-        <TouchableOpacity className="bg-white mr-3 shadow">
+        <TouchableOpacity className="bg-white mr-3 shadow" onPress={() => navigation.navigate("Restaurant", {
+            id,
+            imgUrl,
+            title,
+            rating,
+            genre,
+            address,
+            short_description,
+            dishes,
+            long,
+            lat,
+        })}>
             <Image className="h-36 w-64 rounded-sm" source={{ uri: urlFor(imgUrl).url() }} />
             <View className="px-3 pb-4">
                 <Text className="font-bold text-lg pt-2">

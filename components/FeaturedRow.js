@@ -4,20 +4,6 @@ import RestaurantCard from "./RestaurantCard.js";
 import { AntDesign } from '@expo/vector-icons';
 import sanityClient from "../sanity.js";
 const FeaturedRow = ({ id, title, description, restaurants }) => {
-
-    useEffect(() => {
-        sanityClient.fetch(` 
-        *[_type=="featured"]{
-          ...,
-          restaurants[]->{
-            ...,
-            dishes[]->
-            
-          }
-        }
-        `).then(data => { console.log(data); setFeaturedCategories(data) }).catch(error => console.log(error))
-    }, [])
-
     return (
         <View>
             <View className="mt-4 flex-row items-center justify-between px-4">
