@@ -30,7 +30,7 @@ const HomeScreen = () => {
               }
             }
           }
-      `).then(data => { console.log(data); setFeaturedCategories(data) }).catch(error => console.log(error))
+      `).then(data => { setFeaturedCategories(data) }).catch(error => console.log(error))
     }, [])
 
     return (
