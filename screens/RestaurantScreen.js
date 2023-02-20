@@ -6,9 +6,12 @@ import { AntDesign, Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DishRow from '../components/DishRow';
 import BasketIcon from '../components/BasketIcon';
+import { useDispatch } from 'react-redux';
+import { setRestaurant } from '../features/restaurantSlice';
 const RestaurantScreen = () => {
     const navigation = useNavigation();
-    const [dishes, setDishes] = useState([]);
+    const dispatch = useDispatch();
+    // const [dishes, setDishes] = useState([]);
     const { params: {
         id,
         imgUrl,
@@ -19,6 +22,7 @@ const RestaurantScreen = () => {
         short_description,
         long,
         lat,
+        dishes,
     } } = useRoute()
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -27,15 +31,27 @@ const RestaurantScreen = () => {
     }, []);
 
     useEffect(() => {
-        sanityClient.fetch(`
-            *[_type == "restaurant" && _id==$id]{
-                ...,
-                dishes[]->
-              }
-      `, { id }).then(data => { setDishes(data[0].dishes) }).catch(error => console.log(error))
-    }, []);
+    //     sanityClient.fetch(`
+    //         *[_type == "restaurant" && _id==$id]{
+    //             ...,
+    //             dishes[]->
+    //           }
+    //   `, { id }).then(data => { setDishes(data[0].dishes) }).catch(error => console.log(error))
+
+
+        dispatch(setRestaurant({
+            id,
+            imgUrl,
+            title,
+            rating,
+            genre,
+            address,
+            short_description,
+            dishes
+        }))
+    }, [dispatch]);
     return (
-        <SafeAreaView>
+        // <SafeAreaView>
             <>
                 <BasketIcon />
                 <ScrollView>
@@ -92,7 +108,7 @@ const RestaurantScreen = () => {
                     </View>
                 </ScrollView>
             </>
-        </SafeAreaView>
+        // </SafeAreaView>
     )
 }
 
