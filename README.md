@@ -1,8 +1,6 @@
 # ON MY PLATE
 ## This is a food delivery application built using React Native,EXPO,TAILWIND CSS ,Sanity, and Redux. The app enables users to browse through a list of restaurants, view their menus, and place orders.
 
-[Deployed On Expo](https://expo.dev/@nandkumar/deliveroo)
-
 ## Features
 Browse restaurants and menus
 
